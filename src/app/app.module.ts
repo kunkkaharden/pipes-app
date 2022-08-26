@@ -1,26 +1,34 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContadorComponent } from './contador.component';
-import { DbzModule } from './dbz/dbz.module';
-import { HeroesModule } from './heroes/heroes.modulo';
+import { SharedModule } from './shared/shared.module';
+import { VentasModule } from './ventas/ventas.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-
+//loacale
+import localeEs from '@angular/common/locales/es';
+import localeRu from '@angular/common/locales/ru';
+import { registerLocaleData} from '@angular/common';
+registerLocaleData(localeEs);
+registerLocaleData(localeRu);
 @NgModule({
   declarations: [
     AppComponent,
-    ContadorComponent,
+
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HeroesModule,
-    DbzModule,
+    BrowserAnimationsModule,
+    SharedModule,
+    VentasModule,
   ],
-  providers: [],
+  providers: [{
+    provide: LOCALE_ID, useValue: 'es'
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

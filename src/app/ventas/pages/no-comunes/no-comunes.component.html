@@ -1,0 +1,53 @@
+<div class="text-layout">
+  <h1>Pipes no tan comunes</h1>
+  <p>
+    Pipes incluidos en Angular - Common Module
+  </p>
+</div>
+<div class="grid">
+  <div class="col-6">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+      <p>
+        Saludos {{persona.nombre}} es un placer {{persona.genero| i18nSelect:invitacionMap}}
+      </p>
+      <button pButton type="button" label="Cambiar persona"
+      class="p-button-outlined"
+      (click)="cambiarPersona()"></button>
+    </p-fieldset>
+  </div>
+  <div class="col-6">
+    <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+      <p>
+         Actualmente  {{clientes.length | i18nPlural:clientesMap }}
+      </p>
+      <button pButton type="button" label="Eliminar cliente"
+      class="p-button-outlined"
+      (click)="eliminarCliente()"></button>
+
+    </p-fieldset>
+  </div>
+  <div class="col-6">
+    <p-fieldset legend="Slice Pipe" [toggleable]="true">
+
+      <b>Original</b>
+      <pre>
+        {{clientes | slice:0}}
+      </pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col-6">
+    <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+      <ul>
+        <li *ngFor="let p of persona2 | keyvalue">{{p.key | titlecase}}: {{p.value}}</li>
+      </ul>
+    </p-fieldset>
+  </div>
+  <div class="col-6">
+    <p-fieldset legend="Async Pipe" [toggleable]="true">
+      <pre>{{miObservable | async}}</pre>
+      <pre *ngIf="!(promesa | async)">Cargando...</pre>
+      <pre>{{promesa | async}}</pre>
+    </p-fieldset>
+  </div>
+</div>
